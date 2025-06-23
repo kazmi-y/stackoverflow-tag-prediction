@@ -4,6 +4,42 @@
 
 This project predicts the top 10 most frequent tags for Stack Overflow questions using a deep learning LSTM model. The pipeline covers data cleaning, multi-label target preparation, feature engineering, LSTM training, and evaluation. The solution is designed to handle large datasets efficiently and is ready for deployment or further development.
 
+
+### Data Overview:
+
+We loaded and explored two datasets: Questions.csv and Tags.csv.
+The Questions dataset contains information about Stack Overflow questions, including Title, Body, CreationDate, Score, etc.
+The Tags dataset links question IDs to their respective tags.
+There are over 1.2 million unique questions and 37,000 unique tags.
+Missing Values and Duplicates:
+
+The Questions dataset has missing values for OwnerUserId and ClosedDate.
+The Tags dataset has a small number of missing Tag values and one duplicate row.
+Tag Distribution:
+
+The top 10 most frequent tags were identified and visualized: 'javascript', 'java', 'c#', 'php', 'android', 'jquery', 'python', 'html', 'c++', and 'ios'.
+Most questions have between 2 and 4 tags, with a maximum of 5 tags per question.
+Text Analysis:
+
+We analyzed the length of question titles and bodies. Titles are generally much shorter than bodies.
+No empty titles or bodies were found.
+Preprocessing and Model Preparation:
+
+We focused on questions associated with the top 10 tags.
+HTML was removed from the question bodies, and the text was cleaned by converting to lowercase and removing non-alphabetic characters.
+Cleaned titles and bodies were combined for modeling.
+Multi-label binarization was applied to the top 10 tags to create target variables for the model.
+The text data was tokenized and padded for input into the LSTM model.
+The data was split into training and validation sets.
+Model Training and Evaluation:
+
+A Sequential LSTM model was built for multi-label classification.
+The model was trained for 5 epochs.
+The classification report shows the precision, recall, and F1-score for each of the top 10 tags on the validation set.
+The Hamming Loss and Subset Accuracy were also calculated to evaluate the multi-label classification performance.
+Model and Tokenizer Saving:
+
+The trained LSTM model and the tokenizer object were saved for future use.
 ---
 
 ## How to Load and Use the Model for Inference
